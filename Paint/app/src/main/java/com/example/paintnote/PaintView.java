@@ -6,8 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+
 
 
 public class PaintView extends View {
@@ -16,10 +19,25 @@ public class PaintView extends View {
 
     public PaintView(Context context){
         super(context);
+        init();
+
+    }
+    public PaintView(Context context, AttributeSet attrs){
+        super(context,attrs);
+        init();
+
+    }
+
+    public void init(){
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(5);
+    }
+    public void clear(){
+       path.reset();
+       invalidate();
+
     }
 
 
