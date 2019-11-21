@@ -47,6 +47,7 @@ public class PaintView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPath(path,paint);
+        invalidate();
     }
 
     @Override
@@ -63,7 +64,9 @@ public class PaintView extends View {
             default:
                 break;
 
+
         }
+
         postInvalidate();
         return true;
     }
