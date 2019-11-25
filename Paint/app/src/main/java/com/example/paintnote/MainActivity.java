@@ -1,12 +1,14 @@
 package com.example.paintnote;
 
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clear.setTextColor(Color.WHITE);
         // Seek bar's max value changed!
         seekBar.setMax(20);
+        seekBar.setProgress(5);
 
         divider.setBackgroundColor(getResources().getColor(R.color.blue));
 
@@ -58,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                paintView.paint.setStrokeWidth(seekBar.getProgress());
+                paintView.stroke = seekBar.getProgress();
+
+
 
             }
         });
@@ -71,13 +76,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId()==red.getId())
-            paintView.paint.setColor(Color.RED);
+            paintView.color = Color.RED;
+
         else if (v.getId()==blue.getId())
-            paintView.paint.setColor(Color.BLUE);
+            paintView.color = Color.BLUE;
         else if (v.getId()==orange.getId())
-            paintView.paint.setColor(Color.rgb(255,87,34));
+            paintView.color = Color.rgb(255, 87, 34);
         else if  (v.getId()==black.getId())
-            paintView.paint.setColor(Color.BLACK);
+            paintView.color=Color.BLACK;
         else
             paintView.clear();
 
